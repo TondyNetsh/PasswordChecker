@@ -9,7 +9,7 @@ public class Password {
         boolean digitCheck = false;
         boolean oneSpecialChar = false;
 
-        Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
+        Pattern pattern = Pattern.compile("[^A-Za-z0-9]");
         String str = "abc@";
         Matcher match = pattern.matcher(str);
 
