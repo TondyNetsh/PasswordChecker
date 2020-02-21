@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class PasswordMain {
 
     public static void main(String[] args) {
-        System.out.println("Enter a password.");
+        System.out.println("Enter a password: ");
         Scanner sc = new Scanner(System.in);
         String passWord = sc.nextLine();
 

@@ -9,9 +9,10 @@ public class Password {
         boolean digitCheck = false;
         boolean oneSpecialChar = false;
 
-        Pattern pattern = Pattern.compile("[^A-Za-z0-9]");
-        String str = "abc@";
-        Matcher match = pattern.matcher(str);
+//        String str = "abc@";
+//        Pattern pattern = Pattern.compile("[@_!#$%^&*()<>?/\\|}{~:]");
+//        Matcher match = pattern.matcher(str);
+        String specialChars = "(.*[,~,!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,<,>,/,?].*$)";
 
         if(password.length() < 8){
             throw new PasswordException("Password less than 8 characters.");
@@ -26,7 +27,7 @@ public class Password {
             if(Character.isDigit(c)){
                 digitCheck = true;
             }
-            if (match.matches()){
+            if (password.matches(specialChars)) {
                 oneSpecialChar = true;
             }
         }
