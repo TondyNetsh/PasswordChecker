@@ -1,7 +1,7 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Password {
+public class PasswordChecker {
 
     public static void validatePassword(String password) throws PasswordException{
         boolean upperCase = false;
