@@ -11,7 +11,7 @@ public class PasswordChecker {
 
     public static void passwordIsValid(String password) throws PasswordException{
 
-        Pattern pass = Pattern.compile(".~!@#\\$%\\^&*\\(\\)_-=\\+:;'/,<>\\{}");
+        Pattern pass = Pattern.compile("\\.~!@#\\$%\\^&*\\(\\)_-=\\+:;'/,<>\\{}");
         Matcher matcher = pass.matcher(password);
 
         if(password.isEmpty() || password == null){
