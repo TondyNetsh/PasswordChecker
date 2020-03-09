@@ -1,35 +1,57 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class PasswordChecker {
+    static boolean passwordExist = false;
     static boolean upperCase = false;
     static boolean lowerCase = false;
     static boolean digitCheck = false;
     static boolean oneSpecialChar = false;
     static int counter = 0;
 
-    public void validatePassword(String password) throws PasswordException{
+    public static void passwordIsValid(String password) throws PasswordException{
 
-        String specialChars = "(.*[,~,!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,<,>,/,?,.]*$)";
+        Pattern pass = Pattern.compile(".~!@#\\$%\\^&*\\(\\)_-=\\+:;'/,<>\\{}");
+        Matcher matcher = pass.matcher(password);
 
-        if(password.length() < 8 && password != null){
-            throw new PasswordException("Password less than 8 characters and should not be empty.");
+        if(password.isEmpty() || password == null){
+            throw new PasswordException("Password is empty.");
+        }
+
+        if(password.length() < 8){
+            throw new PasswordException("Password less than 8 characters.");
+        }
+        if(password != null){
+            passwordExist = true;
         }
         for(char c : password.toCharArray()){
             if(Character.isUpperCase(c)){
                 upperCase = true;
-                counter++;
             }
             if(Character.isLowerCase(c)){
                 lowerCase = true;
-                counter++;
             }
             if(Character.isDigit(c)){
                 digitCheck = true;
-                counter++;
             }
-            if (password.matches(specialChars)) {
+            if (password.matches(password)) {
                 oneSpecialChar = true;
-                counter++;
             }
         }
+
+        if(upperCase == true){
+            counter++;
+        }
+        if(lowerCase == true){
+            counter++;
+        }
+        if(oneSpecialChar == true){
+            counter++;
+        }
+        if(digitCheck == true){
+            counter++;
+        }
+
         if(!upperCase){
             throw new PasswordException("There is no uppercase character in your password");
         }
@@ -42,7 +64,7 @@ public class PasswordChecker {
         if(!oneSpecialChar){
             throw new PasswordException("There is no special character in your password.");
         }
-       // System.out.println("Valid password");
+        System.out.println("Valid password");
     }
 
     public static boolean passwordIsOk(String password) throws PasswordException{
@@ -50,10 +72,10 @@ public class PasswordChecker {
 
         if(counter >= 3){
             valid = true;
-            System.out.print("Password valid: " + true);
+            System.out.print("Password is valid: " + valid);
         }
-        else if (counter < 3){
-            System.out.print("Password valid: " + false);
+        else{
+            System.out.print("Password is valid: " + valid);
         }
         return valid;
     }
