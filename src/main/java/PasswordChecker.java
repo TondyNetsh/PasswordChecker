@@ -11,15 +11,15 @@ public class PasswordChecker {
 
     public static void passwordIsValid(String password) throws PasswordException{
 
-        Pattern pass = Pattern.compile("\\.~!@#\\$%\\^&*\\(\\)_-=\\+:;'/,<>\\{}");
+        Pattern pass = Pattern.compile(".~!@#\\?\\$%\\^&*\\(\\)_-=\\+:;'/,<>\\{}");
         Matcher matcher = pass.matcher(password);
 
         if(password.isEmpty() || password == null){
-            throw new PasswordException("Password is empty.");
+            throw new PasswordException("password should exist.");
         }
 
         if(password.length() < 8){
-            throw new PasswordException("Password less than 8 characters.");
+            throw new PasswordException("password should be longer than than 8 characters");
         }
         if(password != null){
             passwordExist = true;
@@ -53,16 +53,16 @@ public class PasswordChecker {
         }
 
         if(!upperCase){
-            throw new PasswordException("There is no uppercase character in your password");
+            throw new PasswordException("password should have at least one uppercase letter.");
         }
         if(!lowerCase){
-            throw new PasswordException("There is no lowercase character in your password");
+            throw new PasswordException("password should have at least one lowercase letter.");
         }
         if(!digitCheck){
-            throw new PasswordException("There is no number character in your password");
+            throw new PasswordException("password should at least have one digit.");
         }
         if(!oneSpecialChar){
-            throw new PasswordException("There is no special character in your password.");
+            throw new PasswordException("password should have at least one special character.");
         }
         System.out.println("Valid password");
     }

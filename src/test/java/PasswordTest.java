@@ -22,6 +22,6 @@ public class PasswordTest{
     }
     @Test
     public void PasswordCheckerTest() throws PasswordException{
-        assertTrue("Valid password: ",PasswordChecker.passwordIsOk("Rotondwa11!@"));
+        Assert.assertTrue("Rotondwa11!@",PasswordChecker.passwordIsOk("Rotondwa11!@"));
     }
 }
